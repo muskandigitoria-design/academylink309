@@ -15,38 +15,23 @@
   font-family:'Inter',sans-serif;
 }
 
+/* BODY — FIXED SCREEN */
 body{
-  min-height:100vh;
-  background:
-    radial-gradient(circle at top,#1a2a44,transparent 55%),
-    linear-gradient(135deg,#0b0f1a,#05070d);
+  height:100vh;
+  overflow:hidden;                 /* ❌ NO SCROLL */
   display:flex;
   align-items:center;
   justify-content:center;
   color:#fff;
+  background:
+    linear-gradient(#0b0f1a 1px, transparent 1px),
+    linear-gradient(90deg,#0b0f1a 1px, transparent 1px),
+    radial-gradient(circle at top,#1e3a8a33,transparent 60%),
+    linear-gradient(135deg,#020617,#020617);
+  background-size:40px 40px,40px 40px,auto,auto;
 }
 
-/* subtle light sweep */
-body::after{
-  content:"";
-  position:absolute;
-  inset:-60%;
-  background:linear-gradient(
-    120deg,
-    transparent 40%,
-    rgba(120,160,255,0.08),
-    transparent 60%
-  );
-  animation:sweep 10s linear infinite;
-  z-index:0;
-}
-
-@keyframes sweep{
-  0%{transform:translateX(-30%)}
-  100%{transform:translateX(30%)}
-}
-
-/* container */
+/* CONTAINER */
 .wrapper{
   position:relative;
   z-index:2;
@@ -55,18 +40,20 @@ body::after{
   padding:20px;
 }
 
-/* card */
+/* CARD */
 .card{
-  background:rgba(15,20,35,0.9);
+  background:rgba(10,15,30,0.88);
+  backdrop-filter:blur(14px);
   border-radius:18px;
   padding:26px 22px;
   text-align:center;
-  border:1px solid rgba(120,160,255,0.25);
+  border:1px solid rgba(99,102,241,0.35);
   box-shadow:
-    0 10px 40px rgba(0,0,0,0.8),
-    0 0 25px rgba(120,160,255,0.15);
+    0 15px 45px rgba(0,0,0,.9),
+    0 0 30px rgba(99,102,241,.15);
 }
 
+/* TEXT */
 .small-title{
   font-size:12px;
   letter-spacing:1px;
@@ -77,7 +64,7 @@ body::after{
   font-size:22px;
   font-weight:700;
   margin:6px 0 10px;
-  color:#a7c7ff;
+  color:#c7d2fe;
 }
 
 .badge{
@@ -85,38 +72,38 @@ body::after{
   font-size:11px;
   padding:5px 14px;
   border-radius:20px;
-  background:linear-gradient(45deg,#3b82f6,#60a5fa);
+  background:linear-gradient(45deg,#6366f1,#60a5fa);
   color:#000;
   font-weight:700;
   margin-bottom:14px;
 }
 
-/* image */
+/* PROFILE */
 .profile img{
   width:140px;
   height:140px;
   border-radius:50%;
   object-fit:cover;
-  border:4px solid #3b82f6;
+  border:4px solid #6366f1;
   margin:14px 0;
-  box-shadow:0 0 20px rgba(59,130,246,0.6);
+  box-shadow:0 0 25px rgba(99,102,241,.7);
 }
 
-/* content */
+/* CONTENT */
 .tagline{
   font-size:14px;
   line-height:1.6;
-  margin:10px 0 16px;
+  margin:10px 0 12px;
   color:#e5e7eb;
 }
 
 .points{
   font-size:13px;
   line-height:1.7;
-  color:#cbd5e1;
+  color:#c7d2fe;
 }
 
-/* button */
+/* BUTTON */
 @keyframes pulse{
   0%{transform:scale(1)}
   50%{transform:scale(1.07)}
@@ -125,31 +112,31 @@ body::after{
 
 .btn{
   display:inline-block;
-  margin-top:18px;
+  margin-top:16px;
   padding:14px 30px;
   border-radius:30px;
-  background:linear-gradient(45deg,#3b82f6,#60a5fa);
+  background:linear-gradient(45deg,#6366f1,#60a5fa);
   color:#000;
   font-weight:700;
   font-size:14px;
   text-decoration:none;
   animation:pulse 2.8s infinite;
-  box-shadow:0 0 22px rgba(59,130,246,0.7);
+  box-shadow:0 0 26px rgba(99,102,241,.9);
 }
 
 .footer{
   font-size:11px;
-  margin-top:14px;
+  margin-top:12px;
   opacity:.85;
 }
 
 .disclaimer{
   font-size:10px;
-  margin-top:10px;
+  margin-top:8px;
   color:#9ca3af;
 }
 
-/* credit */
+/* CREDIT */
 .credit{
   position:fixed;
   bottom:10px;
@@ -157,7 +144,7 @@ body::after{
   text-align:center;
   font-size:13px;
   font-weight:700;
-  color:#a7c7ff;
+  color:#c7d2fe;
 }
 .credit a{
   color:#60a5fa;
@@ -187,12 +174,12 @@ body::after{
 
     <p class="tagline">
       Professional Market Guidance<br>
-      Backed by Discipline & Compliance
+      Built on Discipline & Compliance
     </p>
 
     <p class="points">
       ✔️ Risk-managed strategies<br>
-     
+      ✔️ Structured trading approach
     </p>
 
     <a href="https://t.me/+wH3cwQXVpq1hMDc9" class="btn">
@@ -204,7 +191,7 @@ body::after{
     </p>
 
     <p class="disclaimer">
-      Disclaimer: Trading involves market risk. This is for educational purposes only.
+      Disclaimer: Trading involves market risk. Educational purpose only.
     </p>
 
   </div>
@@ -217,7 +204,8 @@ body::after{
     @Nexgroww_agency
   </a>
 </div>
-<!-- 🔥 Dynamic Meta Pixel Code -->
+
+<!-- Meta Pixel Code -->
 <script>
 !function(f,b,e,v,n,t,s)
 {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -227,12 +215,12 @@ n.queue=[];t=b.createElement(e);t.async=!0;
 t.src=v;s=b.getElementsByTagName(e)[0];
 s.parentNode.insertBefore(t,s)}(window, document,'script',
 'https://connect.facebook.net/en_US/fbevents.js');
-
-// init pixel
 fbq('init', '896900486032375');
-
-// Send unique UUID as event parameter
-fbq('track', 'PageView', { uuid: "f92dd594-d931-4e66-81d6-93bfba38ef62" });
+fbq('track', 'PageView');
 </script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=896900486032375&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
 </body>
 </html>
