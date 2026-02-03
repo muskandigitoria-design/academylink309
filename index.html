@@ -1,198 +1,191 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Trading with Karol | SEBI Registered</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Instant Entry</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet" />
 
 <style>
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  font-family:'Inter',sans-serif;
-}
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
 
-/* FULL SCREEN — NO SCROLL */
 body{
-  height:100vh;
+  text-align:center;
+  color:white;
+  background:black;
   overflow:hidden;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  color:#fff;
-  background:
-    linear-gradient(#0b0f1a 1px, transparent 1px),
-    linear-gradient(90deg,#0b0f1a 1px, transparent 1px),
-    radial-gradient(circle at top,#1e3a8a33,transparent 60%),
-    linear-gradient(135deg,#020617,#020617);
-  background-size:40px 40px,40px 40px,auto,auto;
+  position:relative;
+  height:100vh;
 }
 
-/* WRAPPER */
-.wrapper{
+/* BACKGROUND */
+.background{
+  position:fixed;
+  inset:0;
+  background:url('https://thinkbigx.sbs/wp-content/uploads/2025/05/photo-1611974789855-9c2a0a7236a3-scaled-1.jpeg')
+  no-repeat center/cover;
+  filter:blur(1px);
+  z-index:0;
+}
+.overlay{
+  position:absolute;
+  inset:0;
+  background:rgba(0,0,0,0.6);
+  pointer-events:none; /* 🔥 FIX */
+}
+
+/* FLOATING BUBBLES */
+.bubbles span{
+  position:absolute;
+  bottom:-50px;
+  width:20px;height:20px;
+  background:rgba(255,255,255,0.2);
+  border-radius:50%;
+  animation:rise 10s infinite linear;
+}
+.bubbles span:nth-child(2){width:30px;height:30px;left:20%;animation-duration:7s;}
+.bubbles span:nth-child(3){width:40px;height:40px;left:40%;animation-duration:9s;}
+.bubbles span:nth-child(4){width:50px;height:50px;left:60%;animation-duration:6s;}
+.bubbles span:nth-child(5){width:60px;height:60px;left:80%;animation-duration:8s;}
+
+@keyframes rise{
+  0%{bottom:-50px;opacity:0}
+  50%{opacity:1}
+  100%{bottom:100%;opacity:0}
+}
+
+/* CENTER CARD */
+.container{
   position:relative;
   z-index:2;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  height:100vh;
+  padding:15px;
+}
+
+.blur-box{
+  background:rgba(255,255,255,0.15);
+  backdrop-filter:blur(12px);
+  border-radius:14px;
+  padding:22px;
   width:100%;
-  max-width:420px;
-  padding:20px;
+  max-width:400px;
+  box-shadow:0 4px 20px rgba(255,255,255,0.25);
 }
 
-/* CARD */
-.card{
-  background:rgba(10,15,30,0.88);
-  backdrop-filter:blur(14px);
-  border-radius:18px;
-  padding:26px 22px;
-  text-align:center;
-  border:1px solid rgba(99,102,241,0.35);
-  box-shadow:
-    0 15px 45px rgba(0,0,0,.9),
-    0 0 30px rgba(99,102,241,.15);
-}
+h1{font-size:15px;margin-bottom:4px;}
+h2{font-size:22px;margin-bottom:10px;}
 
-/* TEXT */
-.small-title{
-  font-size:12px;
-  letter-spacing:1px;
-  opacity:.85;
-}
-
-.main-title{
-  font-size:22px;
+.timer{
+  font-size:20px;
   font-weight:700;
-  margin:6px 0 10px;
-  color:#c7d2fe;
-}
-
-.badge{
-  display:inline-block;
-  font-size:11px;
-  padding:5px 14px;
-  border-radius:20px;
-  background:linear-gradient(45deg,#6366f1,#60a5fa);
-  color:#000;
-  font-weight:700;
-  margin-bottom:14px;
+  margin:10px 0;
+  color:#00ffcc;
 }
 
 /* PROFILE */
 .profile img{
-  width:140px;
-  height:140px;
+  width:145px;
   border-radius:50%;
-  object-fit:cover;
-  border:4px solid #6366f1;
-  margin:14px 0;
-  box-shadow:0 0 25px rgba(99,102,241,.7);
+  margin:12px 0;
+  border:3px solid #00ffcc;
 }
 
-/* CONTENT */
-.tagline{
-  font-size:14px;
-  line-height:1.6;
-  margin:10px 0 12px;
-  color:#e5e7eb;
-}
-
-.points{
-  font-size:13px;
-  line-height:1.7;
-  color:#c7d2fe;
-}
-
-/* BUTTON */
+/* CTA BUTTON */
 @keyframes pulse{
   0%{transform:scale(1)}
-  50%{transform:scale(1.07)}
+  50%{transform:scale(1.12)}
   100%{transform:scale(1)}
 }
 
-.btn{
+.view-btn{
   display:inline-block;
-  margin-top:16px;
-  padding:14px 30px;
+  margin-top:12px;
+  padding:12px 22px;
   border-radius:30px;
-  background:linear-gradient(45deg,#6366f1,#60a5fa);
-  color:#000;
-  font-weight:700;
   font-size:14px;
+  font-weight:600;
   text-decoration:none;
-  animation:pulse 2.8s infinite;
-  box-shadow:0 0 26px rgba(99,102,241,.9);
+  color:#000;
+  background:linear-gradient(45deg,#00ffcc,#1abc9c);
+  animation:pulse 2.5s infinite;
+  box-shadow:0 0 18px rgba(0,255,204,0.9);
 }
 
-.footer{
+/* TEXT */
+.footer-text{
   font-size:11px;
-  margin-top:12px;
+  margin-top:10px;
   opacity:.85;
 }
-
 .disclaimer{
   font-size:10px;
-  margin-top:8px;
-  color:#9ca3af;
+  margin-top:12px;
+  color:#ccc;
 }
 
-/* CREDIT */
+/* ⭐ CREDIT — CLICKABLE FIX */
 .credit{
   position:fixed;
-  bottom:10px;
+  bottom:8px;
+  left:0;
   width:100%;
   text-align:center;
   font-size:13px;
   font-weight:700;
-  color:#c7d2fe;
+  color:#00ffcc;
+  z-index:9999; /* 🔥 VERY IMPORTANT */
 }
 .credit a{
-  color:#60a5fa;
+  color:#66fff0;
   text-decoration:none;
+  font-weight:800;
+  cursor:pointer;
 }
-.credit a:hover{
-  text-decoration:underline;
-}
+.credit a:hover{text-decoration:underline;}
+
 </style>
 </head>
 
 <body>
 
-<div class="wrapper">
-  <div class="card">
+<div class="background">
+  <div class="overlay"></div>
+  <div class="bubbles">
+    <span></span><span></span><span></span><span></span><span></span>
+  </div>
+</div>
 
-    <div class="small-title">WELCOME TO</div>
-    <div class="main-title">Trading with Karol</div>
+<div class="container">
+  <div class="blur-box">
 
-    <div class="badge">SEBI REGISTERED • OFFICIAL</div>
+    <h1>Welcome to</h1>
+    <h2>Trading with karol Sebi Registered
+
+    </h2>
+
+    <div class="timer">
+      Redirecting in <span id="countdown">5</span> seconds
+    </div>
 
     <div class="profile">
-      <a href="https://t.me/+wH3cwQXVpq1hMDc9">
-        <img src="https://thinkbigx.sbs/wp-content/uploads/2026/01/traddde.jpg" alt="Trading with Karol">
+      <a href="wH3cwQXVpq1hMDc9">
+        <img src="https://fantasticczone.site/wp-content/uploads/2026/02/channels4_profile.jpg" alt="Trading Logo">
       </a>
     </div>
 
-    <p class="tagline">
-      Professional Market Guidance<br>
-      Built on Discipline & Compliance
-    </p>
+    <h4>📈 Smart Trading • Risk Management</h4>
+    <p>Live Market Insights & Professional Analysis</p>
+  
 
-    <p class="points">
-      ✔️ Risk-managed strategies<br>
-      ✔️ SEBI-aligned approach
-    </p>
-
-    <!-- 🔥 TRACKED BUTTON -->
-    <a href="https://t.me/+wH3cwQXVpq1hMDc9"
-       class="btn"
-       id="joinTelegramBtn">
-      JOIN OFFICIAL TELEGRAM
+    <a href="wH3cwQXVpq1hMDc9" class="view-btn">
+      JOIN TRADING CHANNEL
     </a>
 
-    <p class="footer">
-      Learn • Analyse • Trade Responsibly
-    </p>
-
+    <p class="footer-text">📊 Learn • Trade • Grow with Experts</p>
     <p class="disclaimer">
       Disclaimer: Trading involves market risk. Educational purpose only.
     </p>
@@ -200,7 +193,7 @@ body{
   </div>
 </div>
 
-<!-- CREDIT -->
+<!-- ⭐ CLICKABLE CREDIT LINE -->
 <div class="credit">
   ads managed by 
   <a href="https://t.me/+TRlJl628l-FkMWE9" target="_blank">
@@ -208,7 +201,21 @@ body{
   </a>
 </div>
 
-<!-- META PIXEL -->
+<!-- ⏱ TIMER + REDIRECT -->
+<script>
+//let countdown = 5;
+//const redirectURL = "wH3cwQXVpq1hMDc9";
+
+const interval = setInterval(() => {
+  document.getElementById("countdown").innerText = countdown;
+  countdown--;
+ // if (countdown < 0) {
+    clearInterval(interval);
+   // window.location.href = redirectURL;
+  }
+//}, 1000);
+</script>
+<!-- Meta Pixel Code -->
 <script>
 !function(f,b,e,v,n,t,s)
 {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -218,25 +225,12 @@ n.queue=[];t=b.createElement(e);t.async=!0;
 t.src=v;s=b.getElementsByTagName(e)[0];
 s.parentNode.insertBefore(t,s)}(window, document,'script',
 'https://connect.facebook.net/en_US/fbevents.js');
-
 fbq('init', '896900486032375');
 fbq('track', 'PageView');
 </script>
-
-<!-- 🔥 BUTTON CLICK TRACKING -->
-<script>
-document.getElementById("joinTelegramBtn").addEventListener("click", function () {
-  fbq('track', 'Lead', {
-    content_name: 'Telegram Join',
-    content_category: 'Trading Channel'
-  });
-});
-</script>
-
-<noscript>
-<img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=896900486032375&ev=PageView&noscript=1"/>
-</noscript>
-
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=896900486032375&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
 </body>
 </html>
