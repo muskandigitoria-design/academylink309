@@ -1,220 +1,162 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Instant Entry</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet" />
-
+<head><link rel="icon" type="image/x-icon" href="https://d2543nuuc0wvdg.cloudfront.net/favicon.ico">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>landing page</title>
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f0f4ff;
+    margin: 0;
+    padding: 15px;
+    text-align: center;
+    line-height: 1.5;
+    color:#222;
+  }
 
-body{
-  text-align:center;
-  color:white;
-  background:black;
-  overflow:hidden;
-  position:relative;
-  height:100vh;
-}
+  .logo {
+    width: 95px;
+    border-radius: 50%;
+    display: block;
+    margin: 0 auto 12px;
+    transition: transform 0.3s ease;
+  }
 
-/* BACKGROUND */
-.background{
-  position:fixed;
-  inset:0;
-  background:url('https://thinkbigx.sbs/wp-content/uploads/2025/05/photo-1611974789855-9c2a0a7236a3-scaled-1.jpeg')
-  no-repeat center/cover;
-  filter:blur(1px);
-  z-index:0;
-}
-.overlay{
-  position:absolute;
-  inset:0;
-  background:rgba(0,0,0,0.6);
-  pointer-events:none; /* 🔥 FIX */
-}
+  .logo:hover {
+    transform: scale(1.08);
+  }
 
-/* FLOATING BUBBLES */
-.bubbles span{
-  position:absolute;
-  bottom:-50px;
-  width:20px;height:20px;
-  background:rgba(255,255,255,0.2);
-  border-radius:50%;
-  animation:rise 10s infinite linear;
-}
-.bubbles span:nth-child(2){width:30px;height:30px;left:20%;animation-duration:7s;}
-.bubbles span:nth-child(3){width:40px;height:40px;left:40%;animation-duration:9s;}
-.bubbles span:nth-child(4){width:50px;height:50px;left:60%;animation-duration:6s;}
-.bubbles span:nth-child(5){width:60px;height:60px;left:80%;animation-duration:8s;}
+  h1 {
+    color:#0b5ed7;
+    font-size:1.7rem;
+    margin:8px 0;
+    line-height:1.3;
+    font-weight: 700;
+  }
 
-@keyframes rise{
-  0%{bottom:-50px;opacity:0}
-  50%{opacity:1}
-  100%{bottom:100%;opacity:0}
-}
+  .tagline {
+    font-weight:600;
+    color:#444;
+    margin:5px 0;
+    font-size:1rem;
+  }
 
-/* CENTER CARD */
-.container{
-  position:relative;
-  z-index:2;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  height:100vh;
-  padding:15px;
-}
+  .highlight {
+    color:#28a745;
+    font-weight:bold;
+    font-size:1.05rem;
+    margin:6px 0;
+  }
 
-.blur-box{
-  background:rgba(255,255,255,0.15);
-  backdrop-filter:blur(12px);
-  border-radius:14px;
-  padding:22px;
-  width:100%;
-  max-width:400px;
-  box-shadow:0 4px 20px rgba(255,255,255,0.25);
-}
+  .community {
+    font-weight:600;
+    font-size:0.95rem;
+    margin:5px 0;
+    color:#555;
+  }
 
-h1{font-size:15px;margin-bottom:4px;}
-h2{font-size:22px;margin-bottom:10px;}
+  ul {
+    list-style:none;
+    padding-left:0;
+    display:inline-block;
+    text-align:left;
+    margin:14px 0;
+    max-width:330px;
+  }
 
-.timer{
-  font-size:20px;
-  font-weight:700;
-  margin:10px 0;
-  color:#00ffcc;
-}
+  ul li {
+    margin:6px 0;
+    font-size:0.92rem;
+    color:#333;
+    line-height:1.35;
+  }
 
-/* PROFILE */
-.profile img{
-  width:145px;
-  border-radius:50%;
-  margin:12px 0;
-  border:3px solid #00ffcc;
-}
+  .timer {
+    font-size:1.15rem;
+    font-weight:bold;
+    color:red;
+    margin:14px 0;
+  }
 
-/* CTA BUTTON */
-@keyframes pulse{
-  0%{transform:scale(1)}
-  50%{transform:scale(1.12)}
-  100%{transform:scale(1)}
-}
+  .join-btn {
+    background:#0b5ed7;
+    color:#fff;
+    border:none;
+    padding:13px 28px;
+    border-radius:50px;
+    font-size:1rem;
+    cursor:pointer;
+    text-decoration:none;
+    display:inline-block;
+    margin:14px 0;
+    transition: background 0.3s ease;
+    animation: pulse 1.6s infinite;
+  }
 
-.view-btn{
-  display:inline-block;
-  margin-top:12px;
-  padding:12px 22px;
-  border-radius:30px;
-  font-size:14px;
-  font-weight:600;
-  text-decoration:none;
-  color:#000;
-  background:linear-gradient(45deg,#00ffcc,#1abc9c);
-  animation:pulse 2.5s infinite;
-  box-shadow:0 0 18px rgba(0,255,204,0.9);
-}
+  @keyframes pulse {
+    0%   { transform: scale(1); }
+    50%  { transform: scale(1.08); }
+    100% { transform: scale(1); }
+  }
 
-/* TEXT */
-.footer-text{
-  font-size:11px;
-  margin-top:10px;
-  opacity:.85;
-}
-.disclaimer{
-  font-size:10px;
-  margin-top:12px;
-  color:#ccc;
-}
+  .join-btn:hover {
+    background:#084298;
+  }
 
-/* ⭐ CREDIT — CLICKABLE FIX */
-.credit{
-  position:fixed;
-  bottom:8px;
-  left:0;
-  width:100%;
-  text-align:center;
-  font-size:13px;
-  font-weight:700;
-  color:#00ffcc;
-  z-index:9999; /* 🔥 VERY IMPORTANT */
-}
-.credit a{
-  color:#66fff0;
-  text-decoration:none;
-  font-weight:800;
-  cursor:pointer;
-}
-.credit a:hover{text-decoration:underline;}
+  .footer {
+    margin:12px 0;
+    font-size:.88rem;
+    line-height:1.4;
+  }
+
+  .footer b { font-weight:700; }
+  .footer a {
+    color:#0b5ed7;
+    text-decoration:none;
+  }
+  .footer a:hover { text-decoration:underline; }
+
+  .disclaimer {
+    margin-top:18px;
+    font-size:0.75rem;
+    color:#666;
+    max-width:620px;
+    margin-left:auto;
+    margin-right:auto;
+    line-height:1.45;
+    padding:0 10px;
+  }
+
+  /* 📱 Responsive Tweaks */
+  @media (max-width:480px) {
+    h1 { font-size:1.45rem; }
+    .highlight { font-size:1rem; }
+    ul li { font-size:0.87rem; }
+    .timer { font-size:1.05rem; }
+    .join-btn { font-size:0.95rem; padding:11px 22px; }
+  }
+
+  /* ⭐ Added Credit Line */
+  .credit {
+    margin-top: 18px;
+    text-align: center;
+    font-size: 14px;
+    color: #0b5ed7;
+    font-weight: 700;
+    opacity: 0.9;
+  }
+  .credit a {
+    color: #005ad7;
+    text-decoration: none;
+    font-weight: 800;
+  }
+  .credit a:hover { text-decoration: underline; }
 
 </style>
-</head>
 
-<body>
 
-<div class="background">
-  <div class="overlay"></div>
-  <div class="bubbles">
-    <span></span><span></span><span></span><span></span><span></span>
-  </div>
-</div>
 
-<div class="container">
-  <div class="blur-box">
-
-    <h1>Welcome to</h1>
-    <h2>Trading with karol Sebi Registered
-
-    </h2>
-
-    <div class="timer">
-      Redirecting in <span id="countdown">5</span> seconds
-    </div>
-
-    <div class="profile">
-      <a href="wH3cwQXVpq1hMDc9">
-        <img src="https://fantasticczone.site/wp-content/uploads/2026/02/channels4_profile.jpg" alt="Trading Logo">
-      </a>
-    </div>
-
-    <h4>📈 Smart Trading • Risk Management</h4>
-    <p>Live Market Insights & Professional Analysis</p>
-  
-
-    <a href="https://t.me/+wH3cwQXVpq1hMDc9" class="view-btn">
-      JOIN TRADING CHANNEL
-    </a>
-
-    <p class="footer-text">📊 Learn • Trade • Grow with Experts</p>
-    <p class="disclaimer">
-      Disclaimer: Trading involves market risk. Educational purpose only.
-    </p>
-
-  </div>
-</div>
-
-<!-- ⭐ CLICKABLE CREDIT LINE -->
-<div class="credit">
-  ads managed by 
-  <a href="https://t.me/+TRlJl628l-FkMWE9" target="_blank">
-    @Nexgroww_agency
-  </a>
-</div>
-
-<!-- ⏱ TIMER + REDIRECT -->
-<script>
-//let countdown = 5;
-//const redirectURL = "wH3cwQXVpq1hMDc9";
-
-const interval = setInterval(() => {
-  document.getElementById("countdown").innerText = countdown;
-  countdown--;
- // if (countdown < 0) {
-    clearInterval(interval);
-   // window.location.href = redirectURL;
-  }
-//}, 1000);
-</script>
 <!-- Meta Pixel Code -->
 <script>
 !function(f,b,e,v,n,t,s)
@@ -232,5 +174,61 @@ fbq('track', 'PageView');
 src="https://www.facebook.com/tr?id=896900486032375&ev=PageView&noscript=1"
 /></noscript>
 <!-- End Meta Pixel Code -->
+
+
+</head>
+<body>
+
+<a href="https://t.me/+wH3cwQXVpq1hMDc9">
+  <img src="https://fantasticczone.site/wp-content/uploads/2026/02/channels4_profile.jpg" alt="Profile Logo" class="logo">
+</a>
+
+<h1>Trading with karol Sebi Registered
+</h1>
+<div class="tagline">Dedicated to Learning, Awareness & Smarter Classes</div>
+<div class="community">Join 70,000+ learners who are shaping their journey 🚀</div>
+
+<ul>
+  <li>📊 Learn how markets function in a simple & practical way</li>
+ 
+</ul>
+
+<div class="timer" id="timer">00 Min 05 Sec ⏳ Hurry Up!</div>
+
+<a href="https://t.me/+wH3cwQXVpq1hMDc9" class="join-btn">🚀 Join Free Learning Group</a>
+
+<div class="footer">
+  If you use <b>Telegram</b>, you can 
+  <a href="https://t.me/+wH3cwQXVpq1hMDc9">Join Our Group Instantly</a> 😍
+</div>
+
+<div class="disclaimer">
+  <b>Disclaimer:</b> We are not SEBI-registered advisors. All information shared is for educational purposes only...
+</div>
+
+<!-- ⭐ CREDIT LINE -->
+<div class="credit">
+  ads managed by  
+  <a href="https://t.me/+TRlJl628l-FkMWE9" target="_blank">@Nexgroww_agency</a>
+</div>
+
+<script>
+  const timerEl = document.getElementById("timer");
+  let timeLeft = 5;
+  let currentTime = timeLeft * 30;
+
+  const interval = setInterval(() => {
+    let displayTime = Math.ceil(currentTime / 30); 
+    let min = String(Math.floor(displayTime / 60)).padStart(2,'0');
+    let sec = String(displayTime % 60).padStart(2,'0');
+    timerEl.innerHTML = `${min} Min ${sec} Sec ⏳ Hurry Up!`;
+
+    if(currentTime <= 0){
+      clearInterval(interval);
+    }
+ //   currentTime--;
+ //}, 100); 
+</script>
+
 </body>
 </html>
